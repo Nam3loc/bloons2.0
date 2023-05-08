@@ -34,20 +34,10 @@ window.addEventListener('load', function() {
     // Running game animations
     function animate() {
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-        handleGameGrid();
-        // game.update();
+        game.update();
         game.draw(ctx);
+        handleGameGrid();
         requestAnimationFrame(animate);
     }
     animate();
 });
-
-// Collision function
-// export function collision(first, second) {
-//     if(!(first.x > second.x + second.width || 
-//         first.x + first.width < second.x || 
-//         first.y > second.y + second.height || 
-//         first.y + first.height < second.y)) {
-//             return true;
-//         }
-// }

@@ -2,6 +2,7 @@
 import { collision } from "../collision.js";
 
 const canvas = document.querySelector('#canvas1');
+const ctx = canvas.getContext('2d');
 const cellSize = 100;
 const cellGap = 3;
 const gameGrid = [];
@@ -15,8 +16,10 @@ const mouse = {
 }
 
 let canvasPosition = canvas.getBoundingClientRect();
+console.log(canvasPosition);
 canvas.addEventListener('mousemove', function(evt){
-    mouse.x = evt.x - canvasPosition.left;
+    mouse.x = (evt.x + 60) - (canvasPosition.left - canvasPosition.width);
+    // mouse.x = evt.x - canvasPosition.left; // Original code
     mouse.y = evt.y - canvasPosition.top;
 });
 canvas.addEventListener('mouseleave', function() {
@@ -53,6 +56,6 @@ export function createGrid(canvasWidth, canvasHeight) {
 // Drawing Grid of Cells
 export function handleGameGrid() {
     for(let i = 0; i < gameGrid.length; i++) {
-        gameGrid[i].draw();
+        gameGrid[i].draw(ctx);
     }
 }
