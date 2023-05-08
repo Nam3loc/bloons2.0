@@ -1,7 +1,8 @@
 // Imports
 import { RedBalloon } from "./Balloons/redBalloon.js";
 import { drawPath } from './Game Board/path.js';
-import { Cell, createGrid, handleGameGrid, collision } from './Game Board/grid.js';
+import { Cell, createGrid, handleGameGrid } from './Game Board/grid.js';
+import { collision } from "./collision.js";
 
 window.addEventListener('load', function() {
     // Canvas
@@ -42,11 +43,11 @@ window.addEventListener('load', function() {
 });
 
 // Collision function
-export function collision(first, second) {
-    if(!(first.x > second.x + second.width || 
-        first.x + first.width < second.x || 
-        first.y > second.y + second.height || 
-        first.y + first.height < second.y)) {
-            return true;
-        }
-}
+// export function collision(first, second) {
+//     if(!(first.x > second.x + second.width || 
+//         first.x + first.width < second.x || 
+//         first.y > second.y + second.height || 
+//         first.y + first.height < second.y)) {
+//             return true;
+//         }
+// }

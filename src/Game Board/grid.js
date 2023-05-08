@@ -1,5 +1,5 @@
 // Imports
-import { collision } from "../script.js";
+import { collision } from "../collision.js";
 
 const canvas = document.querySelector('#canvas1');
 const cellSize = 100;
