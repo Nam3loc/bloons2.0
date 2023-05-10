@@ -1,16 +1,14 @@
 // Imports
 import { RedBalloon } from "./Balloons/redBalloon.js";
-import { drawPath } from './Game Board/path.js';
-import { Cell, createGrid, handleGameGrid } from './Game Board/grid.js';
+import { drawPath } from './GameBoard/path.js';
+import { Cell, createGrid, handleGameGrid } from './GameBoard/grid.js';
 import { collision } from "./collision.js";
+import { canvas, ctx, canvasWidth, canvasHeight } from "./GameBoard/canvas.js";
+import { Monkey, handleMonkeys } from "./Monkeys/Monkey/monkey.js";
+import { Projectile, handleProjectiles } from "./Monkeys/Projectiles/projectiles.js";
+import { handleBalloons } from "./Balloons/balloons.js";
 
 window.addEventListener('load', function() {
-    // Canvas
-    const canvas = document.querySelector('#canvas1');
-    const ctx = canvas.getContext('2d');
-    const canvasWidth = canvas.width = 1000;
-    const canvasHeight = canvas.height = 1000;
-
     // Creating Game
     class Game {
         constructor(width, height) {
@@ -30,14 +28,33 @@ window.addEventListener('load', function() {
     }
 
     const game = new Game(canvasWidth, canvasHeight);
+    // let frame = 0;
 
     // Running game animations
     function animate() {
+        let frame = 0;
+
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         game.update();
         game.draw(ctx);
+
         handleGameGrid();
-        requestAnimationFrame(animate);
+        handleGameGrid();
+        handleMonkeys();
+        handleProjectiles();
+        handleBalloons();
+
+        drawScore();
+        drawTimer();
+        drawGold();
+
+        frame++;
+
+        if (health <= 0){
+            drawGameOver();
+        } else {
+        requestAnimationFrame(game);
+        }
     }
     animate();
 });

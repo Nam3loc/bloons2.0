@@ -1,8 +1,12 @@
 // Imports
 import { collision } from "../collision.js";
+// import { canvas, ctx } from "./canvas.js";
 
+// Canvas
 const canvas = document.querySelector('#canvas1');
 const ctx = canvas.getContext('2d');
+
+// Creating Grid
 const cellSize = 100;
 const cellGap = 3;
 const gameGrid = [];
@@ -16,7 +20,7 @@ const mouse = {
 }
 
 let canvasPosition = canvas.getBoundingClientRect();
-console.log(canvasPosition);
+// console.log(canvasPosition);
 canvas.addEventListener('mousemove', function(evt){
     mouse.x = (evt.x + 60) - (canvasPosition.left - canvasPosition.width);
     // mouse.x = evt.x - canvasPosition.left; // Original code

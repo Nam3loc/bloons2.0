@@ -19,3 +19,9 @@ export class RedBalloon {
         context.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 }
+
+// https://www.youtube.com/watch?v=GFO_txvwK_c&t=26407s
+// 9:37:19
+// Issue with frame not applying to the ballons.js
+// Either export function animate() or watch youtube and figure out how he
+// makes frames work in multiple files
